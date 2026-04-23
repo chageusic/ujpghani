@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "BlogPost": {
+      "title": "Blog Post",
+      "description": "Information about a Naver blog post link",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Title of the blog post" },
+        "url": { "type": "string", "description": "Link to the Naver blog post" },
+        "thumbnail": { "type": "string", "description": "Thumbnail image URL" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Original posting date" }
+      },
+      "required": ["title", "url", "thumbnail", "createdAt"]
+    },
+    "TreatmentCase": {
+      "title": "Treatment Case",
+      "description": "Patient treatment success story",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Headline of the case" },
+        "category": { "type": "string", "description": "Medical category (e.g., Chuna, Accident)" },
+        "content": { "type": "string", "description": "Detailed description of the treatment results" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Display date" }
+      },
+      "required": ["title", "category", "content", "createdAt"]
+    },
+    "User": {
+      "title": "User Profile",
+      "description": "System user with roles",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["SUPER_ADMIN", "CONTENT_MANAGER", "STAFF"] }
+      },
+      "required": ["email", "role"]
+    },
+    "LoginLog": {
+      "title": "Login Activity Log",
+      "description": "Records of user login events",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "email": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "userAgent": { "type": "string" }
+      },
+      "required": ["userId", "email", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/blog_posts/{postId}": {
+      "schema": "BlogPost",
+      "description": "Collection of blog post links for the medical info gallery"
+    },
+    "/treatment_cases/{caseId}": {
+      "schema": "TreatmentCase",
+      "description": "Collection of treatment cases restricted to logged-in users"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User roles and profile information"
+    },
+    "/login_logs/{logId}": {
+      "schema": "LoginLog",
+      "description": "Historical records of user logins"
+    }
+  }
+}

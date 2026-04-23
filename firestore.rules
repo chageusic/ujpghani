@@ -1,0 +1,58 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function getUserRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function hasRole(roles) {
+      return isSignedIn() && getUserRole() in roles;
+    }
+
+    function isSuperAdmin() {
+      return hasRole(['SUPER_ADMIN']);
+    }
+
+    function isContentManager() {
+      return hasRole(['SUPER_ADMIN', 'CONTENT_MANAGER']);
+    }
+
+    function isStaff() {
+      return hasRole(['SUPER_ADMIN', 'CONTENT_MANAGER', 'STAFF']);
+    }
+
+    // Users collection: Only Super Admin can manage roles
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isSuperAdmin());
+      allow write: if isSuperAdmin();
+    }
+
+    // Login Logs: Only Super Admin can read, Users can create their own log on login
+    match /login_logs/{logId} {
+      allow read: if isSuperAdmin();
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+    }
+
+    // Blog Posts: Everyone can read, Content Managers can write
+    match /blog_posts/{postId} {
+      allow read: if true;
+      allow write: if isContentManager();
+    }
+
+    // Treatment Cases: Staff and above can read, Content Managers can write
+    match /treatment_cases/{caseId} {
+      allow read: if isStaff();
+      allow write: if isContentManager();
+    }
+  }
+}
