@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { Header } from './components/Header';
+import { Logo } from './components/Logo';
 import { FloatingMenu } from './components/FloatingMenu';
 import { Home } from './pages/Home';
 import { Intro } from './pages/Intro';
@@ -55,8 +56,8 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
               <Link to="/" className="flex items-center gap-3 mb-6 group">
-                <img src="https://ais-pre-3uyvqyytuxwayd62buyypb-87627272699.asia-northeast1.run.app/logo.png" alt="운정 평강한의원 로고" className="w-10 h-10 rounded-lg shadow-sm" referrerPolicy="no-referrer" />
-                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">운정 <span className="text-primary">평강</span>한의원</h3>
+                <Logo className="w-10 h-10" />
+                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">운정 <span className="text-primary text-[#166534]">평강</span>한의원</h3>
               </Link>
               <p className="text-slate-400 text-sm leading-relaxed">
                 파주 운정 지역의 건강을 책임지는 <br />

@@ -3,6 +3,8 @@ import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, Phone, Clock } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+import { Logo } from './Logo';
+
 export const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -18,11 +20,13 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-lg overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
-              <img src="https://ais-pre-3uyvqyytuxwayd62buyypb-87627272699.asia-northeast1.run.app/logo.png" alt="운정 평강한의원 로고" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            <div className="group-hover:scale-105 transition-transform duration-300">
+              <Logo className="w-12 h-12" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-slate-900 tracking-tight leading-tight group-hover:text-primary transition-colors">운정 <span className="text-primary">평강</span>한의원</span>
+              <span className="text-xl font-bold text-slate-900 tracking-tight leading-tight group-hover:text-primary transition-colors">
+                운정 <span className="text-primary text-[#166534]">평강</span>한의원
+              </span>
               <span className="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Pyeonggang Clinic</span>
             </div>
           </Link>
