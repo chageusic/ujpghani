@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { Header } from './components/Header';
 import { FloatingMenu } from './components/FloatingMenu';
 import { Home } from './pages/Home';
