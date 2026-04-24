@@ -17,9 +17,14 @@ export const Header = () => {
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
-          <Link to="/" className="flex flex-col">
-            <span className="text-xl font-bold text-primary tracking-tight">운정 평강한의원</span>
-            <span className="text-[10px] text-slate-500 uppercase tracking-widest">Pyeonggang Clinic</span>
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-12 h-12 rounded-lg overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
+              <img src="https://ais-pre-3uyvqyytuxwayd62buyypb-87627272699.asia-northeast1.run.app/logo.png" alt="운정 평강한의원 로고" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-slate-900 tracking-tight leading-tight group-hover:text-primary transition-colors">운정 <span className="text-primary">평강</span>한의원</span>
+              <span className="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Pyeonggang Clinic</span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}

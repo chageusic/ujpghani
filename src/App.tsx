@@ -54,7 +54,10 @@ export default function App() {
         <footer className="bg-slate-900 text-white py-12 md:py-20 mb-16 md:mb-0">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
-              <h3 className="text-xl font-bold mb-6">운정 평강한의원</h3>
+              <Link to="/" className="flex items-center gap-3 mb-6 group">
+                <img src="https://ais-pre-3uyvqyytuxwayd62buyypb-87627272699.asia-northeast1.run.app/logo.png" alt="운정 평강한의원 로고" className="w-10 h-10 rounded-lg shadow-sm" referrerPolicy="no-referrer" />
+                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">운정 <span className="text-primary">평강</span>한의원</h3>
+              </Link>
               <p className="text-slate-400 text-sm leading-relaxed">
                 파주 운정 지역의 건강을 책임지는 <br />
                 정직하고 따뜻한 진료를 지향합니다.
